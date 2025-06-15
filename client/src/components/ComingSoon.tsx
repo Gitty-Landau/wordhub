@@ -1,13 +1,13 @@
-import { Input } from "./ui/input";
+import Bg from "./Bg";
 
 const ComingSoon = () => {
   return (
-    <div className="grow flex flex-col items-center justify-center gap-8">
-      <div className="flex flex-col gap-4 items-center justify-center">
-        <span className="text-4xl tracking-widest">Get started</span>
-        <div className="text-muted-foreground">Type in a word</div>
+    <div className="grow relative flex flex-col items-center justify-center gap-8">
+      <Bg />
+      <div className="text-4xl">Brace Yourself</div>
+      <div className="text-muted-foreground text-xl">
+        This feature is still in development. Stay tuned!
       </div>
-      <Input placeholder="Lookup word..." className="w-[40%]" />
     </div>
   );
 };

@@ -2,7 +2,7 @@ import axios from "axios";
 import { DictionaryReturn } from "../types";
 import { DICTIONARY_API_KEY } from "../constants/env";
 
-export const getWordDetails = async (word: string) => {
+export const getDictionaryWord = async (word: string) => {
   const DICTIONARY_URL =
     "https://www.dictionaryapi.com/api/v3/references/collegiate/json";
 
@@ -11,11 +11,5 @@ export const getWordDetails = async (word: string) => {
     method: "GET",
   });
 
-  return data.map(({ meta, hwi, fl, shortdef }) => ({
-    id: meta.id,
-    offensive: meta.offensive,
-    hw: hwi.hw,
-    fl,
-    shortdef,
-  }));
+  return data;
 };

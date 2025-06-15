@@ -1,10 +1,10 @@
-import { getWordDetails } from "@/services/dictionary";
-import type { Word } from "@/types";
+import { getDictionaryWord } from "@/services/dictionary";
+import type { DictionaryReturn, Word } from "@/types";
 import { useQuery } from "@tanstack/react-query";
 
-export const useWordDetails = (word: string) =>
-  useQuery<Word[]>({
+export const useDictionaryWord = (word: string) =>
+  useQuery<DictionaryReturn>({
     queryKey: ["dictionary", word],
-    queryFn: () => getWordDetails(word),
+    queryFn: () => getDictionaryWord(word),
     enabled: !!word,
   });

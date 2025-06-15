@@ -1,19 +1,19 @@
 import { NextFunction, Router, Response, Request } from "express";
-import { getDictionaryWord } from "../services/dictionary";
+import { getThesaurusWord } from "../services/thesaurus";
 
-const dictionaryRouter = Router();
+const thesaurusRouter = Router();
 
-dictionaryRouter.get(
+thesaurusRouter.get(
   "/:word",
   async (req: Request, res: Response, next: NextFunction) => {
     const { word } = req.params;
     try {
-      res.send(await getDictionaryWord(word));
+      res.send(await getThesaurusWord(word));
     } catch (error) {
-      console.log("err");
+      console.log("err", error);
       next(error);
     }
   }
 );
 
-export default dictionaryRouter;
+export default thesaurusRouter;

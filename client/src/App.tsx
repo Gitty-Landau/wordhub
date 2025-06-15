@@ -4,6 +4,7 @@ import Home from "./features/Home";
 import ComingSoon from "./components/ComingSoon";
 import NotFound from "./components/NotFound";
 import Dictionary from "./features/Dictionary";
+import Thesaurus from "./features/Thesaurus";
 
 function App() {
   return (
@@ -11,7 +12,7 @@ function App() {
       <Route path="/" element={<RootLayout />}>
         <Route index element={<Home />} />
         <Route path="/dictionary" element={<Dictionary />} />
-        <Route path="/thesaurus" element={<ComingSoon />} />
+        <Route path="/thesaurus" element={<Thesaurus />} />
         <Route path="/enhance" element={<ComingSoon />} />
         <Route path="/*" element={<NotFound />} />
       </Route>

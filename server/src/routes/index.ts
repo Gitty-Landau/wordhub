@@ -1,8 +1,10 @@
 import { Router, Express, Request, Response, NextFunction } from "express";
 import dictionaryRouter from "./dictionaryRouter";
+import thesaurusRouter from "./thesaurusRouter";
 
 const routers: { name: string; router: Router }[] = [
   { name: "dictionary", router: dictionaryRouter },
+  { name: "thesaurus", router: thesaurusRouter },
 ];
 
 const configRoutes = (app: Express): void => {

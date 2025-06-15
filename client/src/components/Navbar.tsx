@@ -23,10 +23,7 @@ const Navbar = () => {
           {NAV_SPECS.map(({ value, Icon, path }, i) => (
             <NavigationMenuItem key={i}>
               <NavigationMenuLink asChild>
-                <Link
-                  to={path}
-                  className="flex-row gap-2 items-center text-sm font-roboto-mono"
-                >
+                <Link to={path} className="flex-row gap-2 items-center text-sm">
                   {Icon && <Icon className="h-4.5 w-4.5" />}
                   {value && titleCase(value)}
                 </Link>

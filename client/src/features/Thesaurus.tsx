@@ -1,22 +1,22 @@
 import { Input } from "@/components/ui/input";
-import { useDictionaryWord } from "@/hooks/dictionary";
+import { useThesaurusWord } from "@/hooks/thesaurus";
 import { useEffect, useState } from "react";
 import { titleCase } from "@/utils/strings";
 import {
   Card,
+  CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 
-const Dictionary = () => {
+const Thesaurus = () => {
   const [word, setWord] = useState("");
   const [debouncedWord, setDebouncedWord] = useState("");
   const { data, isFetched, isLoading, isSuccess } =
-    useDictionaryWord(debouncedWord);
+    useThesaurusWord(debouncedWord);
 
-  console.log(data);
   // Debounce the word input
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -41,23 +41,29 @@ const Dictionary = () => {
       <Input
         value={word}
         onChange={(e) => setWord(e.target.value)}
-        placeholder="Find definitions..."
+        placeholder="Find synonyms..."
         className="w-[40%]"
       />
       {isSuccess &&
         (data?.length ? (
-          data.map((word) => {
-            return (
-              <Card className="w-full" key={word.meta.uuid}>
-                <CardHeader>
-                  <CardTitle>
-                    <div>{titleCase(word.hwi.hw)}</div>
-                  </CardTitle>
-                  <CardDescription>{word.shortdef}</CardDescription>
-                </CardHeader>
-              </Card>
-            );
-          })
+          data.map((word, i) => (
+            <Card className="w-full" key={i}>
+              <CardHeader>
+                <CardTitle className="flex gap-2">
+                  {titleCase(word.hwi.hw)}
+                  <span className="text-muted-foreground italic font-thin">
+                    {word.fl}
+                  </span>
+                </CardTitle>
+                <CardDescription>{word.shortdef.join("\n")}</CardDescription>
+                <CardContent className="flex flex-wrap gap-6 px-0">
+                  {word.meta.syns.map((syns) => {
+                    return syns.map((syn, i) => <div key={i}>{syn}</div>);
+                  })}
+                </CardContent>
+              </CardHeader>
+            </Card>
+          ))
         ) : (
           <div className="text-muted-foreground">No results found</div>
         ))}
@@ -65,4 +71,4 @@ const Dictionary = () => {
   );
 };
 
-export default Dictionary;
+export default Thesaurus;
