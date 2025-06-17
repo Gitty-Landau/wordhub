@@ -10,7 +10,7 @@ dictionaryRouter.get(
     try {
       res.send(await getDictionaryWord(word));
     } catch (error) {
-      console.log("err");
+      console.log("Error getting dcitionary word", error);
       next(error);
     }
   }

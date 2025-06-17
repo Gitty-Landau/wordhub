@@ -10,7 +10,7 @@ thesaurusRouter.get(
     try {
       res.send(await getThesaurusWord(word));
     } catch (error) {
-      console.log("err", error);
+      console.log("Error getting thesaurus word", error);
       next(error);
     }
   }

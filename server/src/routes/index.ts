@@ -8,11 +8,6 @@ const routers: { name: string; router: Router }[] = [
 ];
 
 const configRoutes = (app: Express): void => {
-  // Register all routers
-  for (const { name, router } of routers) {
-    app.use(`/api/${name}`, router);
-  }
-
   // Reject all other API routes
   app.use("/api/:path", (req: Request, res: Response, next: NextFunction) => {
     const requestedRoute = req.originalUrl;
@@ -31,6 +26,11 @@ const configRoutes = (app: Express): void => {
     // If we reach here, the route is valid, continue to next middleware
     next();
   });
+
+  // Register all routers
+  for (const { name, router } of routers) {
+    app.use(`/api/${name}`, router);
+  }
 };
 
 export default configRoutes;
