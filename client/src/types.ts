@@ -59,11 +59,3 @@ export type DictionaryReturn = Array<{
   }>;
   shortdef: string[];
 }>;
-
-export type Word = {
-  id: string;
-  offensive: boolean;
-  hw: string;
-  fl: string;
-  shortdef: string[];
-};

@@ -1,5 +1,5 @@
 import { getDictionaryWord } from "@/services/dictionary";
-import type { DictionaryReturn, Word } from "@/types";
+import type { DictionaryReturn } from "@/types";
 import { useQuery } from "@tanstack/react-query";
 
 export const useDictionaryWord = (word: string) =>
