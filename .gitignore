@@ -1,1 +1,37 @@
+# Node
 node_modules
+.pnpm-store
+
+# Build outputs
+dist
+build
+client/dist
+server/dist
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# OS / IDE / editor files
+.DS_Store
+Thumbs.db
+.vscode
+.idea
+
+# TypeScript
+*.tsbuildinfo
+
+# Env files
+.env
+.env.*.local
+.env.local
+
+# Test outputs
+coverage
+
+# Misc
+*.swp
+*.swo
