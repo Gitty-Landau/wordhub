@@ -4,7 +4,9 @@
     "server"
   ],
   "scripts": {
-    "build": "pnpm --filter client... build && pnpm --filter server... build",
+    "lint": "pnpm run compile",
+    "compile": "pnpm --filter client tsc --noEmit && pnpm --filter server tsc --noEmit",
+    "build": "pnpm run compile && pnpm --filter client... build && pnpm --filter server... build",
     "dev": "concurrently \"pnpm --filter server dev\" \"pnpm --filter client dev\""
   },
   "devDependencies": {
