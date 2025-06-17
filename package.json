@@ -1,5 +1,17 @@
 {
-	"dependencies": {
-		"axios": "^1.9.0"
-	}
+  "workspaces": [
+    "client",
+    "server"
+  ],
+  "scripts": {
+    "build": "pnpm --filter client... build && pnpm --filter server... build",
+    "dev": "concurrently \"pnpm --filter server dev\" \"pnpm --filter client dev\""
+  },
+  "dependencies": {
+    "axios": "^1.9.0",
+    "serverless-http": "^3.2.0"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
 }

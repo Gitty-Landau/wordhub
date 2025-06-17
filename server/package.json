@@ -1,6 +1,7 @@
 {
+  "name": "server",
   "scripts": {
-    "dev": "nodemon src/app.ts",
+    "dev": "nodemon src/index.ts",
     "build": "tsc",
     "start": "node dist/app.js"
   },
