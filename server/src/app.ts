@@ -1,5 +1,4 @@
-import type { Response, Request } from "express";
-import express from "express";
+import express, { Response, Request } from "express";
 import cors from "cors";
 import morgan from "morgan";
 import routes from "./routes/index";
@@ -17,7 +16,7 @@ app.use("/api", routes);
 // Error handler
 app.use((err: any, _req: Request, res: Response) => {
   console.error("Error:", err);
-  res.json({ error: "Internal server error" });
+  res.status(500).json({ error: "Internal server error" });
 });
 
 export default app;
