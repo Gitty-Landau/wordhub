@@ -1,4 +1,4 @@
-import { Router, Express, Request, Response, NextFunction } from "express";
+import express, { Router, Request, Response, NextFunction } from "express";
 import dictionaryRouter from "./dictionaryRouter";
 import thesaurusRouter from "./thesaurusRouter";
 
@@ -7,7 +7,7 @@ const routers: { name: string; router: Router }[] = [
   { name: "thesaurus", router: thesaurusRouter },
 ];
 
-const configRoutes = (app: Express): void => {
+const configRoutes = (app: express.Express): void => {
   // Reject all other API routes
   app.use("/api/:path", (req: Request, res: Response, next: NextFunction) => {
     const requestedRoute = req.originalUrl;
