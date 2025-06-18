@@ -1,4 +1,9 @@
-import { NextFunction, Router, Response, Request } from "express";
+import {
+  Router,
+  type NextFunction,
+  type Response,
+  type Request,
+} from "express";
 import { getThesaurusWord } from "../services/thesaurus";
 
 const thesaurusRouter = Router();
