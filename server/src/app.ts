@@ -17,7 +17,7 @@ app.use("/api", routes);
 // Error handler
 app.use((err: any, _req: Request, res: Response) => {
   console.error("Error:", err);
-  res.status(500).json({ error: "Internal server error" });
+  res.json({ error: "Internal server error" });
 });
 
 export default app;
