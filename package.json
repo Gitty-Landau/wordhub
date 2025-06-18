@@ -6,7 +6,8 @@
   "scripts": {
     "build": "pnpm --filter client build && pnpm --filter server build",
     "dev": "concurrently \"pnpm --filter server dev\" \"pnpm --filter client dev\"",
-    "start": "pnpm --filter server start"
+    "start": "pnpm --filter server start",
+    "compile": "pnpm --filter client exec tsc --noEmit && pnpm --filter server exec tsc --noEmit"
   },
   "devDependencies": {
     "concurrently": "^8.2.2",

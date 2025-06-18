@@ -1,28 +1,29 @@
 {
+  "version": 2,
+  "installCommand": "pnpm install",
+  "buildCommand": "pnpm -F client build && pnpm -F server build",
+  "devCommand": "pnpm concurrently \"pnpm -F client dev\" \"pnpm -F server dev\"",
   "builds": [
     {
       "src": "client/package.json",
       "use": "@vercel/static-build",
       "config": {
-        "distDir": "dist"
+        "outputDirectory": "dist"
       }
     },
     {
-      "src": "api/index.ts",
+      "src": "server/src/index.ts",
       "use": "@vercel/node"
     }
   ],
   "routes": [
     {
       "src": "/api/(.*)",
-      "dest": "/api/index.ts"
-    },
-    {
-      "handle": "filesystem"
+      "dest": "/server/src/index.ts"
     },
     {
       "src": "/(.*)",
-      "dest": "/client/dist/index.html"
+      "dest": "/client/dist/$1"
     }
   ]
 }
