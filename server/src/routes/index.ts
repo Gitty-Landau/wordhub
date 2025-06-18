@@ -1,4 +1,4 @@
-import { Router } from "express";
+import { Router, Request, Response } from "express";
 import dictionaryRouter from "./dictionaryRouter";
 import thesaurusRouter from "./thesaurusRouter";
 
@@ -9,7 +9,7 @@ router.use("/dictionary", dictionaryRouter);
 router.use("/thesaurus", thesaurusRouter);
 
 // Health check route
-router.get("/health", (_req, res) => {
+router.get("/health", (_req: Request, res: Response) => {
   res.status(200).json({
     status: "OK",
     timestamp: new Date().toISOString(),
