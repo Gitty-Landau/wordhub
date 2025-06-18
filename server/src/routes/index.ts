@@ -1,36 +1,33 @@
-import express, { Router, Request, Response, NextFunction } from "express";
+import { Router } from "express";
 import dictionaryRouter from "./dictionaryRouter";
 import thesaurusRouter from "./thesaurusRouter";
 
-const routers: { name: string; router: Router }[] = [
-  { name: "dictionary", router: dictionaryRouter },
-  { name: "thesaurus", router: thesaurusRouter },
-];
+const router = Router();
 
-const configRoutes = (app: express.Express): void => {
-  // Reject all other API routes
-  app.use("/api/:path", (req: Request, res: Response, next: NextFunction) => {
-    const requestedRoute = req.originalUrl;
-    const validRoute = routers.some(({ name }) =>
-      requestedRoute.includes(name)
-    );
+// Mount the routers directly
+router.use("/dictionary", dictionaryRouter);
+router.use("/thesaurus", thesaurusRouter);
 
-    if (!validRoute) {
-      res.status(404).send({
-        error: "Invalid API route",
-        path: requestedRoute,
-      });
-      return;
-    }
-
-    // If we reach here, the route is valid, continue to next middleware
-    next();
+// Health check route
+router.get("/health", (_req, res) => {
+  res.status(200).json({
+    status: "OK",
+    timestamp: new Date().toISOString(),
+    service: "WordHub API",
   });
+});
 
-  // Register all routers
-  for (const { name, router } of routers) {
-    app.use(`/api/${name}`, router);
-  }
-};
+// // 404 handler for unmatched API routes
+// router.use("/*", (req, res) => {
+//   res.status(404).json({
+//     error: "API route not found",
+//     path: req.originalUrl,
+//     availableRoutes: [
+//       "/api/dictionary/:word",
+//       "/api/thesaurus/:word",
+//       "/api/health",
+//     ],
+//   });
+// });
 
-export default configRoutes;
+export default router;

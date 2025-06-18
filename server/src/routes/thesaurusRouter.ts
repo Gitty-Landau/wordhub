@@ -8,7 +8,7 @@ thesaurusRouter.get(
   async (req: Request, res: Response, next: NextFunction) => {
     const { word } = req.params;
     try {
-      res.send(await getThesaurusWord(word));
+      res.status(200).json(await getThesaurusWord(word));
     } catch (error) {
       console.log("Error getting thesaurus word", error);
       next(error);

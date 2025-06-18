@@ -1,20 +1,21 @@
-import express, { NextFunction, Request, Response } from "express";
+import express from "express";
 import cors from "cors";
 import morgan from "morgan";
-import configRoutes from "./routes/index";
+import routes from "./routes/index";
 
 const app = express();
 
 // Middleware
 app.use(cors());
 app.use(morgan(":method :url :status - :response-time ms - :date[web]"));
-app.use(express.json({ limit: "1mb" }));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
-configRoutes(app);
+app.use("/api", routes);
 
-// After all routes:
-app.use((err: unknown, _req: Request, res: Response, _next: NextFunction) => {
-  console.error("Unhandled error:", err);
+// Error handler
+app.use((err: any, _req: express.Request, res: express.Response) => {
+  console.error("Error:", err);
   res.status(500).json({ error: "Internal server error" });
 });
 
