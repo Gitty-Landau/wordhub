@@ -8,7 +8,7 @@ dictionaryRouter.get(
   async (req: Request, res: Response, next: NextFunction) => {
     const { word } = req.params;
     try {
-      res.status(200).json(await getDictionaryWord(word));
+      res.json(await getDictionaryWord(word));
     } catch (error) {
       console.log("Error getting dcitionary word", error);
       next(error);
