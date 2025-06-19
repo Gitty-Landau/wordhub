@@ -7,15 +7,22 @@
       "config": {
         "distDir": "dist"
       }
-    }
-  ],
-  "rewrites": [
+    },
     {
-      "source": "/api/(.*)",
-      "destination": "/api/index"
+      "src": "api/index.ts",
+      "use": "@vercel/node"
     }
   ],
-  "buildCommand": "pnpm build",
-  "installCommand": "pnpm install",
-  "framework": null
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "/api/index.ts"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/client/dist/$1"
+    }
+  ],
+  "buildCommand": "pnpm --filter client build",
+  "installCommand": "pnpm install"
 }

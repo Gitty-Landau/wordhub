@@ -4,7 +4,7 @@
     "server"
   ],
   "scripts": {
-    "build": "pnpm --filter ./client build && pnpm --filter ./server build",
+    "build": "pnpm --filter server build && pnpm --filter client build",
     "dev": "concurrently -n \"SERVER,CLIENT\" -c \"blue,green\" \"pnpm --filter ./server dev\" \"pnpm --filter ./client dev\"",
     "start": "pnpm --filter ./server start",
     "typecheck": "pnpm -r typecheck",
