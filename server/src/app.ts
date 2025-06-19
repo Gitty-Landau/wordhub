@@ -9,7 +9,7 @@ import routes from "./routes/index";
 
 const app = express();
 
-// Middlewaref
+// Middleware
 app.use(cors());
 app.use(morgan(":method :url :status - :response-time ms - :date[web]"));
 app.use(express.json());

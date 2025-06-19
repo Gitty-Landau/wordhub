@@ -4,10 +4,11 @@
     "server"
   ],
   "scripts": {
-    "build": "pnpm --filter client build && pnpm --filter server build",
-    "dev": "concurrently \"pnpm --filter server dev\" \"pnpm --filter client dev\"",
-    "start": "pnpm --filter server start",
-    "compile": "pnpm --filter client exec tsc --noEmit && pnpm --filter server exec tsc --noEmit"
+    "build": "pnpm --filter ./client build && pnpm --filter ./server build",
+    "dev": "concurrently -n \"SERVER,CLIENT\" -c \"blue,green\" \"pnpm --filter ./server dev\" \"pnpm --filter ./client dev\"",
+    "start": "pnpm --filter ./server start",
+    "typecheck": "pnpm -r typecheck",
+    "clean": "rm -rf client/dist server/dist"
   },
   "devDependencies": {
     "concurrently": "^8.2.2",
