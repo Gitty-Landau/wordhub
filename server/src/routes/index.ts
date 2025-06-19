@@ -3,22 +3,24 @@ import {
   type NextFunction,
   type Request,
   type Response,
-} from "express";
-import dictionaryRouter from "./dictionaryRouter";
-import thesaurusRouter from "./thesaurusRouter";
+} from 'express';
+import dictionaryRouter from './dictionaryRouter';
+import thesaurusRouter from './thesaurusRouter';
+import aiRouter from './aiRouter';
 
 const router = Router();
 
 // Mount the routers directly
-router.use("/dictionary", dictionaryRouter);
-router.use("/thesaurus", thesaurusRouter);
+router.use('/dictionary', dictionaryRouter);
+router.use('/thesaurus', thesaurusRouter);
+router.use('/ai', aiRouter);
 
 // Health check route
-router.get("/health", (_req: Request, res: Response, _next: NextFunction) => {
+router.get('/health', (_req: Request, res: Response, _next: NextFunction) => {
   res.status(200).json({
-    status: "OK",
+    status: 'OK',
     timestamp: new Date().toISOString(),
-    service: "WordHub API",
+    service: 'WordHub API',
   });
 });
 
