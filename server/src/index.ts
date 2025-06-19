@@ -7,5 +7,3 @@ app.listen(PORT, () => {
     `Express server running on port ${PORT} in ${process.env.NODE_ENV} mode.`
   );
 });
-
-export default app;
