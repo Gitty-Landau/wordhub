@@ -1,10 +1,10 @@
-import process from "node:process";
-import dotenv from "dotenv";
+import process from 'node:process';
+import dotenv from 'dotenv';
 
-dotenv.config({ path: "./.env" });
+dotenv.config({ path: './.env' });
 
-export const { DICTIONARY_API_KEY, THESUAURUS_API_KEY } = process.env;
+export const { DICTIONARY_API_KEY, THESAURUS_API_KEY } = process.env;
 
 export const { NODE_ENV } = process.env as {
-  NODE_ENV?: "production" | "production-dev" | "development";
+  NODE_ENV?: 'production' | 'production-dev' | 'development';
 };
