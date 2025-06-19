@@ -8,6 +8,7 @@ import morgan from 'morgan';
 import routes from './routes/index';
 
 const app = express();
+console.log('Express app initializing...');
 
 // Middleware
 // Get the client's URL from environment variable for production
@@ -36,6 +37,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use('/api', routes);
+console.log('Routes configured.');
 
 // Error handler
 app.use((err: any, _req: Request, res: Response, _next: NextFunction) => {
