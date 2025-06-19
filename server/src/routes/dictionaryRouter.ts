@@ -11,8 +11,8 @@ const dictionaryRouter = Router();
 dictionaryRouter.get(
   '/:word',
   async (req: Request, res: Response, next: NextFunction) => {
+    console.log('word in dictionary router');
     const { word } = req.params;
-    console.log('word in dictionary router', word);
     try {
       res.json(await getDictionaryWord(word));
     } catch (error) {
