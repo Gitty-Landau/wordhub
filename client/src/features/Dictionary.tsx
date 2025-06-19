@@ -16,7 +16,6 @@ const Dictionary = () => {
   const { data, isFetched, isLoading, isSuccess } =
     useDictionaryWord(debouncedWord);
 
-  console.log(data);
   // Debounce the word input
   useEffect(() => {
     const timer = setTimeout(() => {
