@@ -8,7 +8,11 @@ const NAV_SPECS = [
   { path: "/", Icon: StarIcon },
   { value: "dictionary", path: "/dictionary" },
   { value: "thesaurus", path: "/thesaurus" },
-  { value: "enhance", path: "/enhance", className: "animate-border" },
+  {
+    value: "enhance",
+    path: "/enhance",
+    className: "animate-border",
+  },
 ];
 
 const Navbar = () => {
@@ -21,7 +25,7 @@ const Navbar = () => {
               key={i}
               className={({ isActive }) => {
                 return cn(
-                  `flex-row gap-2 items-center text-sm rounded-full hover:bg-accent/50 p-2 transition text-foreground/80 hover:text-foreground duration-300`,
+                  `flex-row gap-2 items-center text-sm rounded-full hover:bg-accent p-2 transition text-foreground/80 hover:text-foreground duration-300 bg-background`,
                   {
                     "bg-accent text-foreground": isActive,
                   },

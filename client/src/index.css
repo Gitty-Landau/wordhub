@@ -133,6 +133,7 @@
   .animate-border {
     position: relative;
   }
+
   .animate-border::after {
     --angle: 0deg;
     content: "";
