@@ -4,7 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 
 export const useThesaurusWord = (word: string) =>
   useQuery<DictionaryReturn>({
-    queryKey: ["dictionary", word],
+    queryKey: ["thesaurus", word],
     queryFn: () => getThesaurusWord(word),
     enabled: !!word,
   });

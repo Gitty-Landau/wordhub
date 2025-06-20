@@ -1,5 +1,5 @@
-export type DictionaryReturn = Array<{
-  meta: {
+export type DictionaryEntry = {
+  meta?: {
     id: string;
     uuid: string;
     src: string;
@@ -9,7 +9,7 @@ export type DictionaryReturn = Array<{
       tsrc: string;
     };
     stems: string[];
-    syns: string[][];
+    syns?: string[][];
     ants: string[][];
     offensive: boolean;
   };
@@ -58,4 +58,6 @@ export type DictionaryReturn = Array<{
     >;
   }>;
   shortdef: string[];
-}>;
+};
+
+export type DictionaryReturn = (DictionaryEntry | string)[];
