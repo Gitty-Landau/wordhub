@@ -17,7 +17,7 @@ const Thesaurus = () => {
   const [debouncedWord, setDebouncedWord] = useState("");
   const { data, isFetched, isLoading, isSuccess } =
     useThesaurusWord(debouncedWord);
-  console.log(data);
+
   // Debounce the word input
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -49,7 +49,7 @@ const Thesaurus = () => {
         (data?.length ? (
           isStringArray(data) ? (
             <div className="flex flex-col items-center gap-4">
-              <div className="text-foreground/60">{`The search term "${debouncedWord}" was not found. Similar suggestions you might try:`}</div>
+              <div className="text-foreground/60">{`The search term "${debouncedWord}" was not found. Try similar terms:`}</div>
               <div className="flex flex-wrap gap-4">
                 {data.map((suggestedWord, i) => (
                   <Button

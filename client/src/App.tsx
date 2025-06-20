@@ -1,10 +1,10 @@
 import { Route, Routes } from "react-router-dom";
 import RootLayout from "./RootLayout";
 import Home from "./features/Home";
-import ComingSoon from "./components/ComingSoon";
 import NotFound from "./components/NotFound";
 import Dictionary from "./features/Dictionary";
 import Thesaurus from "./features/Thesaurus";
+import Enhance from "./features/Enhance";
 
 function App() {
   return (
@@ -13,7 +13,7 @@ function App() {
         <Route index element={<Home />} />
         <Route path="/dictionary" element={<Dictionary />} />
         <Route path="/thesaurus" element={<Thesaurus />} />
-        <Route path="/enhance" element={<ComingSoon />} />
+        <Route path="/enhance" element={<Enhance />} />
         <Route path="/*" element={<NotFound />} />
       </Route>
     </Routes>

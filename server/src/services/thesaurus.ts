@@ -11,6 +11,5 @@ export const getThesaurusWord = async (word: string) => {
     method: "GET",
   });
 
-  console.log("word 😇", word, "data 😀", data);
   return data;
 };

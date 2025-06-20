@@ -1,38 +1,38 @@
-import { openai } from '@ai-sdk/openai';
-import { pipeDataStreamToResponse, streamText } from 'ai';
+import { openai } from "@ai-sdk/openai";
+import { pipeDataStreamToResponse, streamText } from "ai";
 import {
   Router,
   type NextFunction,
   type Response,
   type Request,
-} from 'express';
+} from "express";
 
 const aiRouter = Router();
 
-aiRouter.post('/', async (req: Request, res: Response, next: NextFunction) => {
-  const { prompt } = req.query;
+aiRouter.post("/", async (req: Request, res: Response, next: NextFunction) => {
+  const { messages } = await req.body;
+
   try {
     pipeDataStreamToResponse(res, {
       execute: async (dataStreamWriter) => {
-        dataStreamWriter.writeData('initialized call');
+        dataStreamWriter.writeData("initialized call");
 
         const result = streamText({
-          model: openai('gpt-4o'),
+          model: openai("gpt-4o"),
+          messages,
           system:
-            'You are a text editor. Enhance the text given. Make sure to fix all the grammer and syntax mistakes.',
-          prompt:
-            'Hi my name is Gitty Landau. I am a softwarse developers. How are you today?',
+            "You are a professional text editor. When given any text, carefully review and improve it by correcting grammar, spelling, punctuation, and syntax errors. Refine the writing for clarity, coherence, and conciseness, while preserving the original meaning and tone. Do not add new information or change the intent of the text.",
         });
 
         result.mergeIntoDataStream(dataStreamWriter);
       },
       onError: (error) => {
-        console.log('Error getting streaming ai text', error);
+        console.log("Error getting streaming ai text", error);
         return error instanceof Error ? error.message : String(error);
       },
     });
   } catch (error) {
-    console.log('Error enhancing text', error);
+    console.log("Error enhancing text", error);
     next(error);
   }
 });

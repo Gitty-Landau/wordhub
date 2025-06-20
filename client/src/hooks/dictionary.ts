@@ -1,4 +1,4 @@
-import { getDictionaryWord } from "@/services/dictionary";
+import { getDictionaryWord } from "@/services/dictionary.ts";
 import type { DictionaryReturn } from "@/types";
 import { useQuery } from "@tanstack/react-query";
 
