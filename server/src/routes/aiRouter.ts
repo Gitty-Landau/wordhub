@@ -10,7 +10,7 @@ import {
 const aiRouter = Router();
 
 aiRouter.post("/", async (req: Request, res: Response, next: NextFunction) => {
-  const { messages } = await req.body;
+  const { messages, styles } = await req.body;
 
   try {
     pipeDataStreamToResponse(res, {
@@ -20,8 +20,9 @@ aiRouter.post("/", async (req: Request, res: Response, next: NextFunction) => {
         const result = streamText({
           model: openai("gpt-4o"),
           messages,
-          system:
-            "You are a professional text editor. When given any text, carefully review and improve it by correcting grammar, spelling, punctuation, and syntax errors. Refine the writing for clarity, coherence, and conciseness, while preserving the original meaning and tone. Do not add new information or change the intent of the text.",
+          system: `You are a professional text editor. When given any text, carefully review and improve it by correcting grammar, spelling, punctuation, and syntax errors. Refine the writing for clarity, coherence, and conciseness, while preserving the original meaning and tone. Do not add new information or change the intent of the text. Compose the text in the following styles: ${styles.join(
+            ", "
+          )}`,
         });
 
         result.mergeIntoDataStream(dataStreamWriter);
