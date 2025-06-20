@@ -8,7 +8,6 @@ import { cn } from "@/lib/utils";
 import { useChat } from "@ai-sdk/react";
 import { Send, StarIcon } from "lucide-react";
 import { useState } from "react";
-import { ScrollArea } from "@/components/ui/scroll-area";
 
 const Enhance = () => {
   const [styles, setStyles] = useState<string[]>([]);
